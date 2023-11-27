@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Wallet</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<div id="confirmationModal">
+    <h3>Confirm Transaction</h3>
+    <p>Do you want to proceed with the transaction?</p>
+    <button onclick="sendConfirmedFunds()">Yes, Send</button>
+    <button onclick="closeConfirmation()">Cancel</button>
+</div>
+<body>
+
+<header>
+    <h1>SecureBit</h1>
+</header>
+
+<nav>
+    <a href="#" onclick="showContent('Home')">Home</a>
+    <a href="#" onclick="showContent('Balance')">Balance</a>
+    <a href="#" onclick="showContent('Send')">Send</a>
+    <a href="#" onclick="showContent('Receive')">Receive</a>
+    <a href="#" onclick="showContent('History')">History</a>
+</nav>
+
+<!-- Display Content -->
+<div id="content" class="container">
+    <h2>Welcome to SecureBit!</h2>
+    <p>Select an option from the menu above.</p>
+</div>
+
+
+
+<!-- Display Balance -->
+<div class="container" id="balanceContainer" style="display: none;">
+    <h2>Your Balance:</h2>
+    <p id="userBalance">Click 'Check Balance' to view</p>
+    <button class="custom-button" onclick="generateRandomBalance()">Check Balance</button>
+</div>
+
+<!-- Display Send Form -->
+<div class="container" id="sendContainer" style="display: none;">
+    <h2>Send Funds</h2>
+    <form>
+        <label for="sendAmount">Amount:</label>
+        <input type="number" id="sendAmount" placeholder="Enter amount" required>
+        
+        <label for="recipientAddress">Recipient Address:</label>
+        <input type="text" id="recipientAddress" placeholder="Enter recipient address" required>
+
+        <button class="custom-button-send" onclick="confirmSend()">Send</button>
+    </form>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="success-message" style="display: none;">
+    <img src="img/sucss.webp" alt="Checkmark">
+    <p>Transaction Successful!</p>
+</div>
+
+
+</div>
+
+
+
+<!-- Display Receive Address -->
+<div class="container" id="receiveContainer" style="display: none;">
+    <h2>Your Receive Address:</h2>
+    <p id="receiveAddress">Your Ethereum Address</p>
+    <button class="custom-button" onclick="showQRCode()">Generate QR Code</button>
+
+    <!-- QR Code Modal -->
+<div id="qrCodeModal" class="modal">
+    <div class="modal-content">
+        <h2>QR Code</h2>
+        <span class="close" onclick="closeQRCodeModal">&times;</span>
+        <div id="qrcode"></div>
+    </div>
+</div>
+</div>
+
+
+<!-- Transaction History -->
+<div class="container" id="historyContainer" style="display: none;">
+    <h2>Transaction History</h2>
+    <ul id="transactionList"></ul>
+</div>
+
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
